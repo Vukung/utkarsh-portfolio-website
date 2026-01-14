@@ -9,48 +9,63 @@ import { SocialLinks } from "./social-links";
 export function HeroSection() {
     return (
         <section className="py-12 md:py-20">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                {/* Profile Photo */}
+            {/* Map Widget - Full Width at Top */}
+            <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <LocationWidget />
+            </motion.div>
+
+            {/* Profile Photo + Bio Section */}
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+                {/* Profile Photo - Left */}
                 <motion.div
+                    className="flex-shrink-0"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <ProfilePhoto />
                 </motion.div>
 
-                {/* Bio and Info */}
-                <div className="flex-1 text-center md:text-left">
+                {/* Bio Content - Right */}
+                <div className="flex-1">
+                    {/* Greeting */}
                     <motion.h1
-                        className="text-4xl md:text-5xl font-bold tracking-tight mb-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        {personalInfo.name}
-                    </motion.h1>
-
-                    <motion.p
-                        className="text-lg md:text-xl text-muted-foreground mb-4"
+                        className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        {personalInfo.role}
-                    </motion.p>
+                        Hey, I'm {personalInfo.name.split(' ')[0]} 👋
+                    </motion.h1>
 
-                    <motion.p
-                        className="text-base text-muted-foreground mb-6 max-w-2xl"
+                    {/* Status indicator */}
+                    <motion.div
+                        className="flex items-center gap-2 mb-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                        <span className="text-sm text-muted-foreground">Available for work</span>
+                    </motion.div>
+
+                    {/* Bio */}
+                    <motion.p
+                        className="text-base text-muted-foreground mb-6 leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
                     >
                         {personalInfo.bio}
                     </motion.p>
 
+                    {/* Social Links */}
                     <SocialLinks />
-
-                    <LocationWidget />
                 </div>
             </div>
         </section>

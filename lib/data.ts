@@ -48,10 +48,47 @@ export const education = [
 ];
 
 export const skills = {
-  languages: ["Python", "C++", "SQL"],
-  frontend: ["React", "React Native"],
-  backend: ["Node.js", "Express.js"],
-  tools: ["Git/GitHub", "AWS", "Power BI", "Excel"],
+  languages: ["Python", "C++", "SQL", "JavaScript"],
+  frameworks: ["React.js", "Express.js", "Node.js", "Vercel AI SDK"],
+  backend: [
+    "RESTful API Design",
+    "JWT Authentication",
+    "OAuth 2.0",
+    "Role-Based Access Control (RBAC)",
+    "Firebase Authentication",
+    "Google Maps API",
+    "Razorpay Payment Gateway",
+    "Express Middleware",
+    "Render Cloud Deployment",
+    "AWS"
+  ],
+  databases: [
+    "MySQL",
+    "MongoDB",
+    "Database Schema Design",
+    "Indexing & Foreign Keys",
+    "Normalization",
+    "Soft Delete Patterns"
+  ],
+  practices: [
+    "Git & GitHub",
+    "Code Reviews & Pull Requests",
+    "API Security & Token Handling",
+    "Query Optimization",
+    "Performance Optimization",
+    "Modular Architecture",
+    "Reusable Component Design",
+    "Real-time Data Handling",
+    "CRUD Operations",
+    "Data Validation",
+    "System Design Thinking",
+    "Open-Source Collaboration",
+    "Agile Team Collaboration",
+    "Machine Learning Pipelines",
+    "Model Evaluation & Hyperparameter Tuning",
+    "Data Cleaning & Feature Engineering",
+    "Visualization & Reporting"
+  ]
 };
 
 export const experience = [

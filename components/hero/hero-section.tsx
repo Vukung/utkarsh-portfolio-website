@@ -8,7 +8,7 @@ import { SocialLinks } from "./social-links";
 
 export function HeroSection() {
     return (
-        <section className="py-12 md:py-20">
+        <section className="pt-12 md:pt-20 pb-4">
             {/* Map Widget - Full Width at Top */}
             <motion.div
                 className="mb-8"

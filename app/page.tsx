@@ -19,11 +19,11 @@ export default function Home() {
           <HeroSection />
         </div>
 
-        {/* Education */}
-        <EducationSection />
-
         {/* Skills */}
         <SkillsSection />
+
+        {/* Education */}
+        <EducationSection />
 
         {/* Experience (Internships) */}
         <div id="experience">

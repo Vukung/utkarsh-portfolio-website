@@ -1,41 +1,40 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Code2, Layout, Server, Wrench } from "lucide-react";
 
 const skillCategories = [
     {
         title: "Languages",
-        icon: Code2,
         skills: skills.languages,
-        color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
+        colorClasses: "bg-blue-500/20 text-blue-400 border-blue-500/30",
     },
     {
-        title: "Frontend",
-        icon: Layout,
-        skills: skills.frontend,
-        color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
+        title: "Frameworks",
+        skills: skills.frameworks,
+        colorClasses: "bg-green-500/20 text-green-400 border-green-500/30",
     },
     {
         title: "Backend",
-        icon: Server,
         skills: skills.backend,
-        color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+        colorClasses: "bg-purple-500/20 text-purple-400 border-purple-500/30",
     },
     {
-        title: "Tools",
-        icon: Wrench,
-        skills: skills.tools,
-        color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
+        title: "Databases",
+        skills: skills.databases,
+        colorClasses: "bg-red-500/20 text-red-400 border-red-500/30",
+    },
+    {
+        title: "Practices",
+        skills: skills.practices,
+        colorClasses: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
     },
 ];
 
 export function SkillsSection() {
     return (
-        <section className="py-12">
+        <section className="pt-2 pb-6">
             <motion.h2
                 className="text-3xl font-bold tracking-tight mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -45,43 +44,38 @@ export function SkillsSection() {
                 Skills
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {skillCategories.map((category, categoryIndex) => {
-                    const Icon = category.icon;
-                    return (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: categoryIndex * 0.1 }}
-                        >
-                            <Card className="p-6 hover:shadow-md transition-shadow">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className={`p-2 rounded-lg ${category.color}`}>
-                                        <Icon className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="text-lg font-semibold">{category.title}</h3>
-                                </div>
-                                <div className="flex flex-wrap gap-2">
-                                    {category.skills.map((skill, skillIndex) => (
-                                        <motion.div
-                                            key={skill}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                                        >
-                                            <Badge variant="secondary" className="text-sm">
-                                                {skill}
-                                            </Badge>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </Card>
-                        </motion.div>
-                    );
-                })}
+            <div className="space-y-6">
+                {skillCategories.map((category, categoryIndex) => (
+                    <motion.div
+                        key={category.title}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: categoryIndex * 0.1 }}
+                    >
+                        <h3 className="text-lg font-semibold mb-3 text-muted-foreground">
+                            {category.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                            {category.skills.map((skill, skillIndex) => (
+                                <motion.div
+                                    key={skill}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.03 }}
+                                >
+                                    <Badge
+                                        variant="outline"
+                                        className={`text-sm px-3 py-1 ${category.colorClasses}`}
+                                    >
+                                        {skill}
+                                    </Badge>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                ))}
             </div>
         </section>
     );

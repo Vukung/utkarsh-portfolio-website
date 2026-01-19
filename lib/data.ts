@@ -115,6 +115,7 @@ export const experience = [
       businessImpact: "The improved booking flow reduced support tickets by 30%, while the secure payment integration increased transaction success rates and user trust."
     },
     skills: ["React Native", "Node.js", "MongoDB", "Firebase", "OAuth", "Google Maps API", "Razorpay", "REST APIs"],
+    logo: "/PulseOn-EV Logo.jpg",
   },
 ];
 

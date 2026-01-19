@@ -144,8 +144,8 @@ export const openSource = [
     logo: "/wallendar.ico",
     duration: "Dec 2025 - Present",
     links: {
-      live: "#",
-      github: "#",
+      live: "https://www.wallendar.shop/",
+      github: "https://github.com/shm-dtt/wallendar",
     },
     skills: ["React", "Next.js", "Canvas API", "Vercel AI SDK", "TypeScript"],
   },

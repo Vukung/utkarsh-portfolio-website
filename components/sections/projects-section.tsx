@@ -1,8 +1,6 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { projects } from "@/lib/data";
 import { motion } from "framer-motion";
 import { ExternalLink, FolderGit2, Github, TrendingUp } from "lucide-react";
@@ -19,91 +17,103 @@ export function ProjectsSection() {
                 Academic Projects
             </motion.h2>
 
-            <div className="grid grid-cols-1 gap-6">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                    >
-                        <Card className="hover:shadow-md transition-shadow">
-                            <CardHeader>
-                                <div className="flex flex-col gap-3">
-                                    <div className="flex items-start justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <FolderGit2 className="w-5 h-5 text-muted-foreground" />
-                                            <h3 className="text-xl font-semibold">{project.title}</h3>
-                                        </div>
-                                        <span className="text-sm text-muted-foreground">{project.duration}</span>
-                                    </div>
+            <div className="relative border-l border-zinc-800 ml-3 space-y-16">
+                {projects.map((project, index) => {
+                    const projectInitials = project.title.substring(0, 1).toUpperCase();
 
-                                    {/* Impact/Stats */}
+                    return (
+                        <motion.div
+                            key={index}
+                            className="relative pl-6 sm:pl-8"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            {/* Header: Logo + Info */}
+                            <div className="flex flex-col sm:flex-row gap-6 mb-4 items-start">
+                                {/* Logo - Large Size Placeholder */}
+                                <div className="flex-shrink-0">
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-900 border border-zinc-800 shadow-sm overflow-hidden flex items-center justify-center">
+                                        {/* Since academic projects usually don't have logos, showing an Icon or Initials */}
+                                        <FolderGit2 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
+                                    </div>
+                                </div>
+
+                                {/* Header text info */}
+                                <div className="flex-grow flex flex-col justify-center gap-1">
+                                    <h3 className="text-xl sm:text-2xl font-bold text-gray-100 leading-tight">{project.title}</h3>
+                                    <div className="flex flex-col">
+                                        <span className="text-base sm:text-lg text-gray-400 font-medium">
+                                            Academic Project
+                                        </span>
+                                        <span className="text-xs sm:text-sm text-gray-500 font-medium uppercase tracking-wide">
+                                            {project.duration}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Body Content */}
+                            <div className="flex flex-col gap-2">
+
+                                {/* Description */}
+                                <div className="text-gray-200 text-sm leading-relaxed space-y-3">
+                                    <p className="text-base text-gray-300">{project.description}</p>
+
+                                    {/* Stats / Impact (if exists) */}
                                     {project.stats && (
-                                        <div className="flex items-center gap-2 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-900 rounded-lg px-3 py-2 w-fit">
-                                            <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
-                                            <span className="text-sm font-medium text-green-700 dark:text-green-300">
-                                                {project.stats.impact || project.stats.accuracy}
-                                            </span>
+                                        <div className="flex items-center gap-2 py-1">
+                                            <div className="flex items-center gap-2 bg-green-900/10 border border-green-800/30 rounded-lg px-3 py-1.5 w-fit">
+                                                <TrendingUp className="w-4 h-4 text-green-500" />
+                                                <span className="text-sm font-medium text-green-400">
+                                                    {project.stats.impact || project.stats.accuracy}
+                                                </span>
+                                            </div>
                                         </div>
                                     )}
-                                </div>
-                            </CardHeader>
 
-                            <CardContent>
-                                <p className="text-base mb-4">{project.description}</p>
-
-                                <div className="space-y-2 mb-4">
-                                    {project.highlights.map((highlight, hIndex) => (
-                                        <motion.div
-                                            key={hIndex}
-                                            className="flex gap-2"
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: index * 0.1 + hIndex * 0.05 }}
-                                        >
-                                            <span className="text-muted-foreground mt-1">•</span>
-                                            <p className="text-sm text-muted-foreground leading-relaxed">{highlight}</p>
-                                        </motion.div>
-                                    ))}
+                                    {/* Highlights */}
+                                    <ul className="list-disc list-outside ml-5 space-y-2">
+                                        {project.highlights.map((highlight, hIndex) => (
+                                            <li key={hIndex} className="pl-1 text-gray-300 text-base">
+                                                {highlight}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.skills.map((skill, sIndex) => (
-                                        <motion.div
+                                {/* Skills Pills */}
+                                <div className="flex flex-wrap gap-2 mt-4">
+                                    {project.skills.map((skill) => (
+                                        <span
                                             key={skill}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: index * 0.1 + sIndex * 0.03 }}
+                                            className="px-3 py-1.5 text-sm font-medium rounded-full bg-green-900/20 text-green-400 border border-green-900/30"
                                         >
-                                            <Badge variant="outline" className="text-xs">
-                                                {skill}
-                                            </Badge>
-                                        </motion.div>
+                                            {skill}
+                                        </span>
                                     ))}
                                 </div>
 
-                                <div className="flex gap-3">
-                                    <Button variant="default" size="sm" asChild>
+                                {/* Links */}
+                                <div className="flex gap-3 mt-4">
+                                    <Button variant="outline" size="sm" className="h-8 border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 hover:text-white" asChild>
                                         <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                                            <ExternalLink className="w-4 h-4 mr-2" />
+                                            <ExternalLink className="w-3.5 h-3.5 mr-2" />
                                             Live Demo
                                         </a>
                                     </Button>
-                                    <Button variant="outline" size="sm" asChild>
+                                    <Button variant="outline" size="sm" className="h-8 border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 hover:text-white" asChild>
                                         <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                                            <Github className="w-4 h-4 mr-2" />
+                                            <Github className="w-3.5 h-3.5 mr-2" />
                                             GitHub
                                         </a>
                                     </Button>
                                 </div>
-                            </CardContent>
-                        </Card>
-                    </motion.div>
-                ))}
+                            </div>
+                        </motion.div>
+                    );
+                })}
             </div>
         </section>
     );

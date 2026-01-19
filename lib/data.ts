@@ -122,7 +122,6 @@ export const experience = [
 export const openSource = [
   {
     title: "Calendar Wallpaper Generator",
-    problem: "Enhancing a widely-used OSS tool to support scalable, dynamic text overlays and modern AI integrations.",
     description: "Production open-source project for generating customizable calendar wallpapers with 300+ downloads, 17 stars, and 6 active contributors",
     contributions: [
       "Before/After: Replaced fragmented font handling with a centralized FontPicker component, eliminating 150+ lines of duplicate code and significantly improving maintainability",
@@ -142,6 +141,7 @@ export const openSource = [
       contributors: 6,
       stars: 17,
     },
+    logo: "/wallendar.ico",
     duration: "Dec 2025 - Present",
     links: {
       live: "#",

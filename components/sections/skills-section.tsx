@@ -36,7 +36,7 @@ export function SkillsSection() {
     return (
         <section className="py-4">
             <motion.h2
-                className="text-3xl font-bold tracking-tight mb-8"
+                className="text-3xl font-bold tracking-tight mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

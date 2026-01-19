@@ -1,7 +1,6 @@
 "use client";
 
 import { personalInfo } from "@/lib/data";
-import { motion } from "framer-motion";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Clock, MapPin, Minus, Plus, Thermometer } from "lucide-react";
@@ -47,68 +46,67 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
     ];
 
     return (
-        <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden border border-border/50 shadow-lg">
-            {/* Map container - Full width */}
-            <MapContainer
-                center={position}
-                zoom={12}
-                minZoom={1}
-                maxZoom={18}
-                scrollWheelZoom={true}
-                zoomControl={false}
-                dragging={true}
-                doubleClickZoom={true}
-                className="w-full h-full"
-                style={{ background: "#1a1a1a" }}
-                ref={setMapInstance}
-            >
-                {/* Dark theme tile layer from CartoDB */}
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                />
+        <div className="relative w-full overflow-x-hidden">
+            {/* Map container */}
+            <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden border border-border/50 shadow-lg">
+                {/* Map container - Full width */}
+                <MapContainer
+                    center={position}
+                    zoom={12}
+                    minZoom={1}
+                    maxZoom={18}
+                    scrollWheelZoom={true}
+                    zoomControl={false}
+                    dragging={true}
+                    doubleClickZoom={true}
+                    className="w-full h-full"
+                    style={{ background: "#1a1a1a" }}
+                    ref={setMapInstance}
+                >
+                    {/* Dark theme tile layer from CartoDB */}
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                    />
 
-                {/* Location marker */}
-                <Marker position={position} icon={customIcon}>
-                    <Popup>
-                        <div className="text-sm">
-                            <strong>{personalInfo.location}</strong>
-                            <br />
-                            <span className="text-xs text-gray-600">
-                                {personalInfo.coordinates.lat.toFixed(4)}, {personalInfo.coordinates.lng.toFixed(4)}
-                            </span>
-                        </div>
-                    </Popup>
-                </Marker>
-            </MapContainer>
+                    {/* Location marker */}
+                    <Marker position={position} icon={customIcon}>
+                        <Popup>
+                            <div className="text-sm">
+                                <strong>{personalInfo.location}</strong>
+                                <br />
+                                <span className="text-xs text-gray-600">
+                                    {personalInfo.coordinates.lat.toFixed(4)}, {personalInfo.coordinates.lng.toFixed(4)}
+                                </span>
+                            </div>
+                        </Popup>
+                    </Marker>
+                </MapContainer>
+            </div>
 
-            {/* Airplane animation */}
-            <motion.div
-                className="absolute z-[1000]"
-                initial={{ x: "10%", y: "20%" }}
+            {/* Airplane animation - COMMENTED OUT FOR LATER WORK */}
+            {/* <motion.div
+                className="absolute top-0 z-[1000] pointer-events-none"
+                initial={{ left: "-100px", top: "30%" }}
                 animate={{
-                    x: ["10%", "80%"],
-                    y: ["20%", "30%", "40%", "25%"],
+                    left: "calc(100% + 100px)", // Travel completely across and off the right edge
+                    top: "30%", // Straight horizontal path
                 }}
                 transition={{
-                    duration: 15,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "linear",
                 }}
             >
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="text-blue-400 drop-shadow-lg"
-                >
-                    <path
-                        d="M22 16.21V11.5C22 10.12 21.12 9 20 9H16L14 4H13L14 9H8L7 7H6L6.5 9H4C2.9 9 2 9.9 2 11V16.21C2 16.76 2.46 17.21 3 17.21C3.15 17.21 3.29 17.17 3.42 17.11L6 16L8.58 17.11C8.71 17.17 8.85 17.21 9 17.21C9.15 17.21 9.29 17.17 9.42 17.11L12 16L14.58 17.11C14.71 17.17 14.85 17.21 15 17.21C15.15 17.21 15.29 17.17 15.42 17.11L18 16L20.58 17.11C20.71 17.17 20.85 17.21 21 17.21C21.54 17.21 22 16.76 22 16.21Z"
-                        fill="currentColor"
-                    />
-                </svg>
-            </motion.div>
+                <img
+                    src="/plane.webp"
+                    alt="Flying airplane"
+                    width={60}
+                    height={60}
+                    className="drop-shadow-2xl"
+                    style={{ transform: 'rotate(90deg)' }}
+                />
+            </motion.div> */}
 
             {/* Location info overlay - Bottom left */}
             <div className="absolute bottom-4 left-4 z-[1000] bg-gray-900/90 backdrop-blur-sm px-4 py-3 rounded-lg border border-gray-700/50 shadow-xl">

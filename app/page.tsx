@@ -2,7 +2,7 @@ import { HeroSection } from "@/components/hero/hero-section";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { AchievementsSection } from "@/components/sections/achievements-section";
-import { EducationSection } from "@/components/sections/education-section";
+
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { OpenSourceSection } from "@/components/sections/open-source-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
@@ -22,8 +22,6 @@ export default function Home() {
         {/* Skills */}
         <SkillsSection />
 
-        {/* Education */}
-        <EducationSection />
 
         {/* Experience (Internships) */}
         <div id="experience">

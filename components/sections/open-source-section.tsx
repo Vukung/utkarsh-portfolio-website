@@ -5,11 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { openSource } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Download, ExternalLink, GitBranch, Github, Star, Users } from "lucide-react";
+import { ChevronDown, ChevronUp, Download, ExternalLink, GitBranch, Github, Star, Users } from "lucide-react";
+import { useState } from "react";
 
 export function OpenSourceSection() {
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+    const toggleExpand = (index: number) => {
+        setExpandedIndex(expandedIndex === index ? null : index);
+    };
+
     return (
-        <section className="py-12">
+        <section className="py-4">
             <motion.h2
                 className="text-3xl font-bold tracking-tight mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -61,6 +68,16 @@ export function OpenSourceSection() {
                             </CardHeader>
 
                             <CardContent>
+                                {/* Problem Statement */}
+                                {(project as any).problem && (
+                                    <div className="mb-4 p-3 bg-purple-500/10 border-l-4 border-purple-500 rounded">
+                                        <p className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                                            <span className="font-semibold">Problem: </span>
+                                            {(project as any).problem}
+                                        </p>
+                                    </div>
+                                )}
+
                                 <p className="text-base mb-4">{project.description}</p>
 
                                 <div className="space-y-2 mb-4">
@@ -78,6 +95,61 @@ export function OpenSourceSection() {
                                         </motion.div>
                                     ))}
                                 </div>
+
+                                {/* Collapsible Case Study */}
+                                {(project as any).caseStudy && (
+                                    <div className="mt-4 mb-4 border-t pt-4">
+                                        <button
+                                            onClick={() => toggleExpand(index)}
+                                            className="flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-purple-400 hover:underline mb-3"
+                                        >
+                                            {expandedIndex === index ? (
+                                                <>
+                                                    <ChevronUp className="w-4 h-4" />
+                                                    Hide Case Study
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <ChevronDown className="w-4 h-4" />
+                                                    Read More - Case Study
+                                                </>
+                                            )}
+                                        </button>
+
+                                        {expandedIndex === index && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto" }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="space-y-3 text-sm"
+                                            >
+                                                <div>
+                                                    <h4 className="font-semibold mb-1">Problem & Constraints</h4>
+                                                    <p className="text-muted-foreground">{(project as any).caseStudy.problemAndConstraints}</p>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold mb-1">Architecture</h4>
+                                                    <p className="text-muted-foreground">{(project as any).caseStudy.architecture}</p>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold mb-1">Key Decision</h4>
+                                                    <p className="text-muted-foreground">{(project as any).caseStudy.keyDecision}</p>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold mb-1">Business Impact</h4>
+                                                    <p className="text-muted-foreground">{(project as any).caseStudy.businessImpact}</p>
+                                                </div>
+                                                {(project as any).caseStudy.whyItMatters && (
+                                                    <div className="p-3 bg-yellow-500/10 border-l-4 border-yellow-500 rounded mt-3">
+                                                        <h4 className="font-semibold mb-1">Why It Matters</h4>
+                                                        <p className="text-muted-foreground">{(project as any).caseStudy.whyItMatters}</p>
+                                                    </div>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </div>
+                                )}
 
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.skills.map((skill, sIndex) => (

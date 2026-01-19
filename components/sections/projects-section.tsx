@@ -9,7 +9,7 @@ import { ExternalLink, FolderGit2, Github, TrendingUp } from "lucide-react";
 
 export function ProjectsSection() {
     return (
-        <section className="py-12">
+        <section className="py-4">
             <motion.h2
                 className="text-3xl font-bold tracking-tight mb-8"
                 initial={{ opacity: 0, y: 20 }}

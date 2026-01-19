@@ -51,7 +51,7 @@ export function ProfilePhoto() {
     };
 
     const circumference = 2 * Math.PI * 62; // radius = 62
-    const animationDuration = 1.5; // seconds - matches photo transition
+    const animationDuration = 0.5; // seconds - matches photo transition - cancelled - now instant transition
 
     return (
         <div className="relative w-32 h-32 mx-auto md:mx-0">
@@ -107,10 +107,10 @@ export function ProfilePhoto() {
                 <motion.div
                     className="absolute inset-0"
                     animate={{ opacity: showGlasses ? 0 : 1 }}
-                    transition={{ duration: animationDuration }}
+                    transition={{ duration: 0 }}
                 >
                     <Image
-                        src="/profile.jpg"
+                        src="/profile1.jpg"
                         alt="Utkarsh Shirbhate"
                         fill
                         className="object-cover"
@@ -122,10 +122,10 @@ export function ProfilePhoto() {
                 <motion.div
                     className="absolute inset-0"
                     animate={{ opacity: showGlasses ? 1 : 0 }}
-                    transition={{ duration: animationDuration }}
+                    transition={{ duration: 0 }}
                 >
                     <Image
-                        src="/profile-glasses.jpg"
+                        src="/profile-glasses1.jpg"
                         alt="Utkarsh Shirbhate with glasses"
                         fill
                         className="object-cover"

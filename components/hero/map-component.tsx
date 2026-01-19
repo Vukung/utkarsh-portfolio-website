@@ -71,7 +71,7 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
     return (
         <div className="relative w-full overflow-x-hidden">
             {/* Map container */}
-            <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden border border-border/50 shadow-lg">
+            <div className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden border border-border/50 shadow-lg">
                 {/* Map container - Full width */}
                 <MapContainer
                     center={mapCenter}

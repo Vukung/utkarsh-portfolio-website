@@ -11,7 +11,7 @@ export const personalInfo = {
   social: {
     github: "https://github.com/Vukung",
     linkedin: "https://www.linkedin.com/in/UtkarshShirbhate",
-    resume: "/resume.pdf", // Add your resume PDF to public folder
+    resume: "/Utkarsh_Shirbhate_Resume.pdf", // RESUME PDF to public folder
   },
 
   coordinates: {

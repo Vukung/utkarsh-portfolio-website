@@ -7,16 +7,19 @@ export const personalInfo = {
   email: "UtkarshShirbhate1311@gmail.com",
   phone: "+91 7820874588",
   dateOfBirth: "November 13, 2004",
-  
+
   social: {
     github: "https://github.com/Vukung",
     linkedin: "https://www.linkedin.com/in/UtkarshShirbhate",
     resume: "/resume.pdf", // Add your resume PDF to public folder
   },
-  
+
   coordinates: {
-    lat: 18.5204,
-    lng: 73.8567,
+    lat: 18.5053,
+    lng: 73.8682,
+
+    // 18°30'19.1"N 73°52'05.4"E
+
   }
 };
 

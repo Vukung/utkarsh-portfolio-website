@@ -5,17 +5,32 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Clock, MapPin, Minus, Plus, Thermometer } from "lucide-react";
 import { useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { CircleMarker, MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
 
-// Custom marker icon
-const customIcon = new L.Icon({
-    iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-    shadowSize: [41, 41],
-});
+// Pulsating dot styles
+const pulseStyle = {
+    animation: "pulse 2s ease-in-out infinite",
+};
+
+// Add keyframes for pulse animation
+if (typeof window !== "undefined" && !document.getElementById("pulse-keyframes")) {
+    const style = document.createElement("style");
+    style.id = "pulse-keyframes";
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1;
+            }
+            50% { 
+                opacity: 0.4;
+            }
+        }
+        .pulsating-marker {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    `;
+    document.head.appendChild(style);
+}
 
 interface MapComponentProps {
     currentTime: string;
@@ -40,8 +55,16 @@ function CustomZoomControl() {
 
 export default function MapComponent({ currentTime, temperature, weatherCondition }: MapComponentProps) {
     const [mapInstance, setMapInstance] = useState<L.Map | null>(null);
+
+    // Marker position - exact coordinates
     const position: [number, number] = [
         personalInfo.coordinates.lat,
+        personalInfo.coordinates.lng,
+    ];
+
+    // Map center - slightly offset to prevent marker from covering city label
+    const mapCenter: [number, number] = [
+        personalInfo.coordinates.lat + 0.018, // Offset ~2000m north
         personalInfo.coordinates.lng,
     ];
 
@@ -51,7 +74,7 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
             <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden border border-border/50 shadow-lg">
                 {/* Map container - Full width */}
                 <MapContainer
-                    center={position}
+                    center={mapCenter}
                     zoom={12}
                     minZoom={1}
                     maxZoom={18}
@@ -69,8 +92,18 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
                         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                     />
 
-                    {/* Location marker */}
-                    <Marker position={position} icon={customIcon}>
+                    {/* Location marker - Pulsating blue dot */}
+                    <CircleMarker
+                        center={position}
+                        radius={5}
+                        pathOptions={{
+                            fillColor: "#3b82f6",
+                            fillOpacity: 0.8,
+                            color: "#60a5fa",
+                            weight: 2,
+                            className: "pulsating-marker"
+                        }}
+                    >
                         <Popup>
                             <div className="text-sm">
                                 <strong>{personalInfo.location}</strong>
@@ -80,7 +113,7 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
                                 </span>
                             </div>
                         </Popup>
-                    </Marker>
+                    </CircleMarker>
                 </MapContainer>
             </div>
 

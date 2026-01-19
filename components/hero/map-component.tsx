@@ -1,11 +1,10 @@
 "use client";
 
 import { personalInfo } from "@/lib/data";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Clock, MapPin, Minus, Plus, Thermometer } from "lucide-react";
 import { useState } from "react";
-import { CircleMarker, MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
+import { CircleMarker, MapContainer, Popup, TileLayer } from "react-leaflet";
 
 // Pulsating dot styles
 const pulseStyle = {
@@ -28,9 +27,18 @@ if (typeof window !== "undefined" && !document.getElementById("pulse-keyframes")
         .pulsating-marker {
             animation: pulse 2s ease-in-out infinite;
         }
+        .map-tiles-invert {
+            filter: invert(1) contrast(1.2) brightness(0.4);
+        }
     `;
     document.head.appendChild(style);
 }
+
+// ... (previous imports)
+import L from "leaflet";
+import { useMap } from "react-leaflet";
+
+// ... (pulse style and keyframes)
 
 interface MapComponentProps {
     currentTime: string;
@@ -62,20 +70,20 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
         personalInfo.coordinates.lng,
     ];
 
-    // Map center - slightly offset to prevent marker from covering city label
+    // Map center - exact coordinates to keep marker in center
     const mapCenter: [number, number] = [
-        personalInfo.coordinates.lat + 0.018, // Offset ~2000m north
+        personalInfo.coordinates.lat,
         personalInfo.coordinates.lng,
     ];
 
     return (
         <div className="relative w-full overflow-x-hidden">
             {/* Map container */}
-            <div className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden border border-border/50 shadow-lg">
+            <div className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden border-2 border-primary/20 shadow-xl shadow-primary/5">
                 {/* Map container - Full width */}
                 <MapContainer
                     center={mapCenter}
-                    zoom={12}
+                    zoom={11.5}
                     minZoom={1}
                     maxZoom={18}
                     scrollWheelZoom={true}
@@ -86,18 +94,19 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
                     style={{ background: "#1a1a1a" }}
                     ref={setMapInstance}
                 >
-                    {/* Dark theme tile layer from CartoDB */}
+                    {/* Dark tiles with brightness boost for visible roads */}
                     <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                        className="map-tiles-bright"
                     />
 
                     {/* Location marker - Pulsating blue dot */}
                     <CircleMarker
                         center={position}
-                        radius={5}
+                        radius={6}
                         pathOptions={{
-                            fillColor: "#3b82f6",
+                            fillColor: "#8a8ac5ff",
                             fillOpacity: 0.8,
                             color: "#60a5fa",
                             weight: 2,
@@ -141,9 +150,9 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
                 />
             </motion.div> */}
 
-            {/* Location info overlay - Bottom left */}
-            <div className="absolute bottom-4 left-4 z-[1000] bg-gray-900/90 backdrop-blur-sm px-4 py-3 rounded-lg border border-gray-700/50 shadow-xl">
-                <div className="flex flex-col gap-2 text-sm">
+            {/* Location info overlay - Top Right - Transparent */}
+            <div className="absolute top-4 right-4 z-[1000] px-2 py-1">
+                <div className="flex flex-col gap-1 text-sm font-medium drop-shadow-md">
                     <div className="flex items-center gap-2 text-gray-200">
                         <MapPin className="w-4 h-4" />
                         <span className="font-medium">{personalInfo.location}</span>
@@ -152,12 +161,12 @@ export default function MapComponent({ currentTime, temperature, weatherConditio
                         <Clock className="w-4 h-4" />
                         <span className="font-mono">{currentTime}</span>
                     </div>
-                    {temperature !== null && (
+                    {/* {temperature !== null && (
                         <div className="flex items-center gap-2 text-gray-200">
                             <Thermometer className="w-4 h-4" />
                             <span>{temperature}°C · {weatherCondition}</span>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
 

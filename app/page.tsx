@@ -23,23 +23,23 @@ export default function Home() {
 
             {/* Skills */}
             <SkillsSection />
-            <div className="mb-32" />
+            <div className="mb-4" />
 
             {/* Experience */}
             <div id="experience">
               <ExperienceSection />
             </div>
-            <div className="mb-32" />
+            <div className="mb-4" />
 
             {/* Open Source */}
             <OpenSourceSection />
-            <div className="mb-32" />
+            <div className="mb-4" />
 
             {/* Projects */}
             <div id="projects">
               <ProjectsSection />
             </div>
-            <div className="mb-32" />
+            <div className="mb-4" />
 
             {/* Achievements */}
             <div id="achievements">

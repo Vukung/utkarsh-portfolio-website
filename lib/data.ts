@@ -95,7 +95,7 @@ export const experience = [
   {
     company: "PulseOn-EV",
     role: "Technical Intern – Web & Mobile Development",
-    duration: "Jun 2025 - Aug 2025",
+    duration: "Jun 2024 - Aug 2024",
     period: "2 MONTHS",
     current: false,
     problem: "Bridging the gap for EV users and older demographics to access on-demand charging and vanity vans through a seamless mobile interface.",
@@ -141,7 +141,7 @@ export const openSource = [
       stars: 17,
     },
     logo: "/wallendar.ico",
-    duration: "Dec 2025 - Present",
+    duration: "Dec 2024 - Present",
     links: {
       live: "https://www.wallendar.shop/",
       github: "https://github.com/shm-dtt/wallendar",
@@ -154,10 +154,10 @@ export const projects = [
   {
     title: "Resume Builder Web Application",
     description: "Full-stack application for creating professional resumes with real-time validation and secure file handling",
-    duration: "May 2025 - Jul 2025",
+    duration: "May 2024 - Jul 2024",
     highlights: [
       "Engineered secure REST APIs with JWT-based authentication",
-      "Modelled normalized MySQL database with 8+ interconnected tables supporting resume content",
+      "Modeled normalized MySQL database with 8+ interconnected tables supporting resume content",
       "Implemented CRUD operations with soft-delete patterns and data validation",
       "Handled secure file uploads using Multer with type/size restrictions and automatic cleanup mechanisms",
       "Achieved sub-second response times for form submissions and data fetching",
@@ -179,7 +179,7 @@ export const projects = [
   {
     title: "Pune House Price Prediction Model",
     description: "End-to-end ML pipeline for real estate valuations in Pune",
-    duration: "Sept 2024 - Oct 2024",
+    duration: "Sep 2024 - Oct 2024",
     highlights: [
       "Engineered an end-to-end ML pipeline in Python for Pune real estate valuations",
       "Achieved an R² score of 0.55 using real-world, non-linear property datasets",

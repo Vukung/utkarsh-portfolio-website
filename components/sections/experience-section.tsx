@@ -44,7 +44,7 @@ export function ExperienceSection() {
                                             <img
                                                 src={(exp as any).logo}
                                                 alt={exp.company}
-                                                className="w-full h-full object-cover scale-115"
+                                                className="w-full h-full object-cover scale-[1.15]"
                                             />
                                         ) : (
                                             <span className="text-2xl font-bold text-foreground">{companyInitials}</span>

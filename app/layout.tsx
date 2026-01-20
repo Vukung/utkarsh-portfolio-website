@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Utkarsh Shirbhate | Full Stack Developer",
-  description: "Full Stack Developer. Building scalable web applications with React, Node.js, and cloud technologies.",
-  keywords: ["Utkarsh Shirbhate", "Full Stack Developer", "React", "Node.js", "Web Developer", "Portfolio"],
+  title: "Utkarsh Shirbhate | Software Engineer",
+  description: "Software Engineer specializing in Application & Data Engineering. Building scalable solutions.",
+  keywords: ["Utkarsh Shirbhate", "Software Engineer", "Application Engineering", "Data Engineering", "Full Stack Developer", "React", "Node.js", "Portfolio"],
   authors: [{ name: "Utkarsh Shirbhate" }],
   openGraph: {
-    title: "Utkarsh Shirbhate | Full Stack Developer",
-    description: "Full Stack Developer. Check out my projects and experience.",
+    title: "Utkarsh Shirbhate | Software Engineer",
+    description: "Software Engineer specializing in Application & Data Engineering. Check out my projects and experience.",
     type: "website",
   },
 };

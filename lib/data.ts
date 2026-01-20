@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Utkarsh Shirbhate",
-  role: "Full Stack Developer",
-  bio: "Building scalable web applications with React, Node.js, and cloud technologies. Passionate about open-source and creating impactful solutions.",
+  role: "Software Engineer | Application & Data Engineering",
+  bio: "Passionate about open-source and creating impactful solutions.",
   location: "Pune, India",
   timezone: "Asia/Kolkata",
   email: "UtkarshShirbhate1311@gmail.com",
@@ -49,45 +49,39 @@ export const education = [
 
 export const skills = {
   languages: ["Python", "C++", "SQL", "JavaScript"],
-  frameworks: ["React.js", "Express.js", "Node.js", "Vercel AI SDK"],
+  frameworks: ["React.js", "Node.js", "Vercel AI SDK"],
   backend: [
     "RESTful API Design",
     "JWT Authentication",
     "OAuth 2.0",
     "Role-Based Access Control (RBAC)",
     "Firebase Authentication",
-    "Google Maps API",
-    "Razorpay Payment Gateway",
-    "Express Middleware",
-    "Render Cloud Deployment",
-    "AWS"
+    "Payment Integration (Razorpay)",
+
+    //     · REST APIs · JWT · OAuth 2.0 · RBAC
+    // Firebase Authentication · Payments Integration (Razorpay)
+
   ],
   databases: [
     "MySQL",
     "MongoDB",
     "Database Schema Design",
-    "Indexing & Foreign Keys",
-    "Normalization",
     "Soft Delete Patterns"
   ],
   practices: [
     "Git & GitHub",
     "Code Reviews & Pull Requests",
     "API Security & Token Handling",
-    "Query Optimization",
-    "Performance Optimization",
-    "Modular Architecture",
     "Reusable Component Design",
-    "Real-time Data Handling",
     "CRUD Operations",
-    "Data Validation",
-    "System Design Thinking",
     "Open-Source Collaboration",
-    "Agile Team Collaboration",
-    "Machine Learning Pipelines",
-    "Model Evaluation & Hyperparameter Tuning",
-    "Data Cleaning & Feature Engineering",
-    "Visualization & Reporting"
+    "Hyperparameter Tuning",
+    "Data Cleaning & Feature Engineering"
+  ],
+  cloud: [
+    "Application Deployment (Render)",
+    "Environment Configuration & Secrets",
+    "Basic AWS Services (IAM, S3)"
   ]
 };
 

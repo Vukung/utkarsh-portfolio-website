@@ -25,6 +25,11 @@ const skillCategories = [
         colorClasses: "badge-red",
     },
     {
+        title: "Cloud & Deployment",
+        skills: skills.cloud,
+        colorClasses: "badge-blue",
+    },
+    {
         title: "Practices",
         skills: skills.practices,
         colorClasses: "badge-yellow",
@@ -33,7 +38,7 @@ const skillCategories = [
 
 export function SkillsSection() {
     return (
-        <section className="py-4">
+        <section className="pb-4 pt-1">
             <motion.h2
                 className="text-3xl font-bold tracking-tight mb-4"
                 initial={{ opacity: 0, y: 20 }}

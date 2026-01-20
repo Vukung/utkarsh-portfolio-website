@@ -9,15 +9,15 @@ import { SkillsSection } from "@/components/sections/skills-section";
 export default function Home() {
   return (
     <>
-      <div className="container max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[35%_65%] gap-20">
+      <div className="container max-w-[1600px] mx-auto px-6">
+        <div className="grid lg:grid-cols-[30%_70%] gap-20">
           {/* Left Sticky Sidebar */}
           <Sidebar />
 
           {/* Right Scrollable Content */}
           <main className="pt-4 pb-16 relative">
             {/* Navbar - Only visible over right column */}
-            <div className="sticky top-0 z-50 -mx-6 mb-4">
+            <div className="sticky top-0 z-50 -mx-6 bg-background/80 backdrop-blur-md">
               <Navbar />
             </div>
 

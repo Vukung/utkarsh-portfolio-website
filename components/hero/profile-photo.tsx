@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export function ProfilePhoto() {
+export function ProfilePhoto({ className }: { className?: string }) {
     const [showGlasses, setShowGlasses] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
@@ -54,7 +54,7 @@ export function ProfilePhoto() {
     const animationDuration = 0.5; // seconds - matches photo transition - cancelled - now instant transition
 
     return (
-        <div className="relative w-32 h-32 mx-auto md:mx-0">
+        <div className={`relative mx-auto md:mx-0 ${className || "w-32 h-32"}`}>
             {/* Animated loading ring - only visible on hover */}
             <svg
                 className="absolute inset-0 w-full h-full -rotate-90"

@@ -26,7 +26,7 @@ export const personalInfo = {
 export const education = [
   {
     year: "2026",
-    degree: "B.Tech",
+    degree: "B.Tech (Savitribai Phule Pune University)",
     institute: "MIT Academy of Engineering, Pune",
     score: "8.88 CGPA",
     remark: "Pursuing",
@@ -122,7 +122,7 @@ export const experience = [
 export const openSource = [
   {
     title: "Calendar Wallpaper Generator",
-    description: "Production open-source project for generating customizable calendar wallpapers with 300+ downloads, 17 stars, and 6 active contributors",
+    description: "Production open-source project for generating customizable calendar wallpapers with 300+ downloads",
     contributions: [
       "Before/After: Replaced fragmented font handling with a centralized FontPicker component, eliminating 150+ lines of duplicate code and significantly improving maintainability",
       "Feature Engineering: Implemented 9-position layout logic and a scalable canvas-based text overlay system for flexible cross-device rendering",
@@ -167,14 +167,15 @@ export const projects = [
       "Achieved 95%+ code reusability with modular, maintainable architecture",
       "Reduced user resume creation time by 80% through intuitive backend logic and dynamic data structure",
     ],
-    skills: ["React.js", "Node.js", "Express.js", "MySQL", "JWT", "Multer"],
+    skills: ["React.js", "Node.js", "Express.js", "MySQL", "JWT"],
     links: {
       live: "#",
-      github: "#",
+      github: "https://github.com/Vukung/Resume-Builder-Webapp",
     },
     stats: {
       impact: "80% reduction in resume creation time",
     },
+    logo: "/ResumeRocket.jpg",
   },
   {
     title: "Pune House Price Prediction Model",

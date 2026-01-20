@@ -35,8 +35,15 @@ export function ProjectsSection() {
                                 {/* Logo - Large Size Placeholder */}
                                 <div className="flex-shrink-0">
                                     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-900 border border-zinc-800 shadow-sm overflow-hidden flex items-center justify-center">
-                                        {/* Since academic projects usually don't have logos, showing an Icon or Initials */}
-                                        <FolderGit2 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
+                                        {(project as any).logo ? (
+                                            <img
+                                                src={(project as any).logo}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover scale-110"
+                                            />
+                                        ) : (
+                                            <FolderGit2 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
+                                        )}
                                     </div>
                                 </div>
 

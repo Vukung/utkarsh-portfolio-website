@@ -50,9 +50,9 @@ export function EducationSection() {
                                         <td className="px-6 py-4 text-sm font-semibold">{edu.score}</td>
                                         <td className="px-6 py-4">
                                             <span
-                                                className={`inline-flex text-xs font-medium px-2.5 py-0.5 rounded-full ${edu.remark === "Pursuing"
-                                                        ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-                                                        : "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+                                                className={`inline-flex text-xs font-medium px-2.5 py-0.5 rounded-full border ${edu.remark === "Pursuing"
+                                                    ? "badge-green"
+                                                    : "badge-blue"
                                                     }`}
                                             >
                                                 {edu.remark}

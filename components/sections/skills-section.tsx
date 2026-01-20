@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
 
@@ -8,27 +7,27 @@ const skillCategories = [
     {
         title: "Languages",
         skills: skills.languages,
-        colorClasses: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+        colorClasses: "badge-blue",
     },
     {
         title: "Frameworks",
         skills: skills.frameworks,
-        colorClasses: "bg-green-500/20 text-green-400 border-green-500/30",
+        colorClasses: "badge-green",
     },
     {
         title: "Backend",
         skills: skills.backend,
-        colorClasses: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+        colorClasses: "badge-purple",
     },
     {
         title: "Databases",
         skills: skills.databases,
-        colorClasses: "bg-red-500/20 text-red-400 border-red-500/30",
+        colorClasses: "badge-red",
     },
     {
         title: "Practices",
         skills: skills.practices,
-        colorClasses: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+        colorClasses: "badge-yellow",
     },
 ];
 
@@ -65,12 +64,11 @@ export function SkillsSection() {
                                     viewport={{ once: true }}
                                     transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.03 }}
                                 >
-                                    <Badge
-                                        variant="outline"
-                                        className={`text-sm px-3 py-1 ${category.colorClasses}`}
+                                    <span
+                                        className={`inline-flex items-center rounded-full border text-sm px-3 py-1 ${category.colorClasses}`}
                                     >
                                         {skill}
-                                    </Badge>
+                                    </span>
                                 </motion.div>
                             ))}
                         </div>

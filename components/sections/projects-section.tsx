@@ -42,19 +42,19 @@ export function ProjectsSection() {
                                                 className="w-full h-full object-cover scale-110"
                                             />
                                         ) : (
-                                            <FolderGit2 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
+                                            <FolderGit2 className="w-8 h-8 sm:w-10 sm:h-10 text-muted-foreground" />
                                         )}
                                     </div>
                                 </div>
 
                                 {/* Header text info */}
                                 <div className="flex-grow flex flex-col justify-center gap-1">
-                                    <h3 className="text-xl sm:text-2xl font-bold text-gray-100 leading-tight">{project.title}</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">{project.title}</h3>
                                     <div className="flex flex-col">
-                                        <span className="text-base sm:text-lg text-gray-400 font-medium">
+                                        <span className="text-base sm:text-lg text-muted-foreground font-medium">
                                             Academic Project
                                         </span>
-                                        <span className="text-xs sm:text-sm text-gray-500 font-medium uppercase tracking-wide">
+                                        <span className="text-xs sm:text-sm text-muted-foreground font-medium uppercase tracking-wide">
                                             {project.duration}
                                         </span>
                                     </div>
@@ -65,15 +65,15 @@ export function ProjectsSection() {
                             <div className="flex flex-col gap-2">
 
                                 {/* Description */}
-                                <div className="text-gray-200 text-sm leading-relaxed space-y-3">
-                                    <p className="text-base text-gray-300">{project.description}</p>
+                                <div className="text-muted-foreground text-sm leading-relaxed space-y-3">
+                                    <p className="text-base text-muted-foreground">{project.description}</p>
 
                                     {/* Stats / Impact (if exists) */}
                                     {project.stats && (
                                         <div className="flex items-center gap-2 py-1">
                                             <div className="flex items-center gap-2 bg-green-900/10 border border-green-800/30 rounded-lg px-3 py-1.5 w-fit">
                                                 <TrendingUp className="w-4 h-4 text-green-500" />
-                                                <span className="text-sm font-medium text-green-400">
+                                                <span className="text-sm font-medium text-green-600 dark:text-green-400">
                                                     {project.stats.impact || project.stats.accuracy}
                                                 </span>
                                             </div>
@@ -83,7 +83,7 @@ export function ProjectsSection() {
                                     {/* Highlights */}
                                     <ul className="list-disc list-outside ml-5 space-y-2">
                                         {project.highlights.map((highlight, hIndex) => (
-                                            <li key={hIndex} className="pl-1 text-gray-300 text-base">
+                                            <li key={hIndex} className="pl-1 text-muted-foreground text-base">
                                                 {highlight}
                                             </li>
                                         ))}
@@ -95,7 +95,7 @@ export function ProjectsSection() {
                                     {project.skills.map((skill) => (
                                         <span
                                             key={skill}
-                                            className="px-3 py-1.5 text-sm font-medium rounded-full bg-green-900/20 text-green-400 border border-green-900/30"
+                                            className="px-3 py-1.5 text-sm font-medium rounded-full border badge-green"
                                         >
                                             {skill}
                                         </span>

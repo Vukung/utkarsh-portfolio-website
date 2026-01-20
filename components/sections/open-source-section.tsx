@@ -134,19 +134,19 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                                 className="w-full h-full object-cover scale-110"
                             />
                         ) : (
-                            <span className="text-2xl font-bold text-gray-200">{projectInitials}</span>
+                            <span className="text-2xl font-bold text-foreground">{projectInitials}</span>
                         )}
                     </div>
                 </div>
 
                 {/* Header text info */}
                 <div className="flex-grow flex flex-col justify-center gap-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-100 leading-tight">{project.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">{project.title}</h3>
                     <div className="flex flex-col">
-                        <span className="text-base sm:text-lg text-gray-400 font-medium">
+                        <span className="text-base sm:text-lg text-muted-foreground font-medium">
                             Open Source Project
                         </span>
-                        <span className="text-xs sm:text-sm text-gray-500 font-medium uppercase tracking-wide">
+                        <span className="text-xs sm:text-sm text-muted-foreground font-medium uppercase tracking-wide">
                             {project.duration}
                         </span>
                     </div>
@@ -157,33 +157,33 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
             <div className="flex flex-col gap-2">
                 {/* Problem Statement (if exists) */}
                 {(project as any).problem && (
-                    <div className="mb-2 p-3 bg-purple-900/10 border-l-4 border-purple-500/50 rounded-r">
-                        <p className="text-sm font-medium text-purple-300">
-                            <span className="font-semibold text-purple-200">Problem: </span>
+                    <div className="mb-2 p-3 bg-purple-50 border-l-4 border-purple-200 dark:bg-purple-900/10 dark:border-purple-500/50 rounded-r">
+                        <p className="text-sm font-medium text-purple-900 dark:text-purple-300">
+                            <span className="font-semibold text-purple-700 dark:text-purple-200">Problem: </span>
                             {(project as any).problem}
                         </p>
                     </div>
                 )}
 
                 {/* Description & Stats */}
-                <div className="text-gray-200 text-sm leading-relaxed space-y-3">
-                    <p className="text-base text-gray-300">{project.description}</p>
+                <div className="text-muted-foreground text-sm leading-relaxed space-y-3">
+                    <p className="text-base text-muted-foreground">{project.description}</p>
 
                     {/* Stats Row - Using Real-Time Stats */}
                     <div className="flex flex-wrap gap-4 py-1">
-                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400">
-                            <Download className="w-4 h-4 text-green-500" />
-                            <span className="font-semibold text-gray-200">{stats.downloads}</span>
+                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
+                            <Download className="w-4 h-4 text-green-600 dark:text-green-500" />
+                            <span className="font-semibold text-foreground">{stats.downloads}</span>
                             <span>downloads</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400">
-                            <Star className="w-4 h-4 text-yellow-500" />
-                            <span className="font-semibold text-gray-200">{stats.stars}</span>
+                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
+                            <Star className="w-4 h-4 text-yellow-600 dark:text-yellow-500" />
+                            <span className="font-semibold text-foreground">{stats.stars}</span>
                             <span>stars</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400">
-                            <Users className="w-4 h-4 text-blue-500" />
-                            <span className="font-semibold text-gray-200">{stats.contributors}</span>
+                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
+                            <Users className="w-4 h-4 text-blue-600 dark:text-blue-500" />
+                            <span className="font-semibold text-foreground">{stats.contributors}</span>
                             <span>contributors</span>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                     {/* Contributions (Highlights) */}
                     <ul className="list-disc list-outside ml-5 space-y-2">
                         {project.contributions.map((contribution, cIndex) => (
-                            <li key={cIndex} className="pl-1 text-gray-300 text-base">
+                            <li key={cIndex} className="pl-1 text-muted-foreground text-base">
                                 {contribution}
                             </li>
                         ))}
@@ -202,7 +202,7 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                         <div className="mt-4 pt-2">
                             <button
                                 onClick={toggleExpand}
-                                className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                                className="flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                             >
                                 {expandedIndex ? (
                                     <>
@@ -223,28 +223,28 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                                     animate={{ opacity: 1, height: "auto" }}
                                     exit={{ opacity: 0, height: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="mt-4 space-y-4 pl-4 border-l-2 border-blue-500/20 text-sm text-gray-400"
+                                    className="mt-4 space-y-4 pl-4 border-l-2 border-blue-500/20 text-sm text-muted-foreground"
                                 >
                                     <div>
-                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Problem & Constraints</h4>
+                                        <h4 className="font-semibold text-foreground mb-1 text-base">Problem & Constraints</h4>
                                         <p>{(project as any).caseStudy.problemAndConstraints}</p>
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Architecture</h4>
+                                        <h4 className="font-semibold text-foreground mb-1 text-base">Architecture</h4>
                                         <p>{(project as any).caseStudy.architecture}</p>
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Key Decision</h4>
+                                        <h4 className="font-semibold text-foreground mb-1 text-base">Key Decision</h4>
                                         <p>{(project as any).caseStudy.keyDecision}</p>
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Business Impact</h4>
+                                        <h4 className="font-semibold text-foreground mb-1 text-base">Business Impact</h4>
                                         <p>{(project as any).caseStudy.businessImpact}</p>
                                     </div>
                                     {(project as any).caseStudy.whyItMatters && (
-                                        <div className="p-3 bg-yellow-900/20 border-l-4 border-yellow-600/50 rounded mt-3">
-                                            <h4 className="font-semibold text-yellow-200 mb-1">Why It Matters</h4>
-                                            <p className="text-gray-400">{(project as any).caseStudy.whyItMatters}</p>
+                                        <div className="p-3 bg-yellow-50 border-l-4 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-600/50 rounded mt-3">
+                                            <h4 className="font-semibold text-yellow-700 dark:text-yellow-200 mb-1">Why It Matters</h4>
+                                            <p className="text-muted-foreground">{(project as any).caseStudy.whyItMatters}</p>
                                         </div>
                                     )}
                                 </motion.div>
@@ -258,7 +258,7 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                     {project.skills.map((skill) => (
                         <span
                             key={skill}
-                            className="px-3 py-1.5 text-sm font-medium rounded-full bg-green-900/20 text-green-400 border border-green-900/30"
+                            className="px-3 py-1.5 text-sm font-medium rounded-full border badge-green"
                         >
                             {skill}
                         </span>

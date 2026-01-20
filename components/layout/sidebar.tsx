@@ -15,7 +15,7 @@ export function Sidebar() {
                         <ProfilePhoto className="w-28 h-28 sm:w-32 sm:h-32" />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <h1 className="text-3xl font-bold leading-tight text-gray-100">
+                        <h1 className="text-3xl font-bold leading-tight text-foreground">
                             {personalInfo.name}
                         </h1>
                         <p className="text-lg text-muted-foreground font-medium mt-1">
@@ -42,7 +42,7 @@ export function Sidebar() {
 
                 {/* Scholastic Record - Compact */}
                 <div className="mb-4">
-                    <h3 className="text-sm font-semibold text-gray-200 mb-3 uppercase tracking-wider">
+                    <h3 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
                         Scholastic Record
                     </h3>
                     <div className="space-y-3 border-l border-zinc-800 ml-1">
@@ -50,17 +50,17 @@ export function Sidebar() {
                             <div key={index} className="pl-4 relative">
                                 <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 block"></span>
                                 <div className="flex flex-col gap-0.5">
-                                    <h4 className="text-sm font-medium text-gray-200 leading-tight">
+                                    <h4 className="text-sm font-medium text-foreground leading-tight">
                                         {edu.degree}
                                     </h4>
                                     <p className="text-xs text-muted-foreground">
                                         {edu.institute}
                                     </p>
                                     <div className="flex items-center gap-2 mt-0.5">
-                                        <span className="text-xs font-semibold text-green-400 bg-green-900/10 px-1.5 py-0.5 rounded border border-green-900/20">
+                                        <span className="text-xs font-semibold badge-green px-1.5 py-0.5 rounded border">
                                             {edu.score}
                                         </span>
-                                        <span className="text-[10px] uppercase text-gray-500 font-medium tracking-wide">
+                                        <span className="text-[10px] uppercase text-muted-foreground font-medium tracking-wide">
                                             {edu.year}
                                         </span>
                                     </div>

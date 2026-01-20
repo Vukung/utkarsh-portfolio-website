@@ -47,19 +47,19 @@ export function ExperienceSection() {
                                                 className="w-full h-full object-cover scale-115"
                                             />
                                         ) : (
-                                            <span className="text-2xl font-bold text-gray-200">{companyInitials}</span>
+                                            <span className="text-2xl font-bold text-foreground">{companyInitials}</span>
                                         )}
                                     </div>
                                 </div>
 
                                 {/* Header text info */}
                                 <div className="flex-grow flex flex-col justify-center gap-1">
-                                    <h3 className="text-xl sm:text-2xl font-bold text-gray-100 leading-tight">{exp.role}</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">{exp.role}</h3>
                                     <div className="flex flex-col">
-                                        <span className="text-base sm:text-lg text-gray-400 font-medium">
+                                        <span className="text-base sm:text-lg text-muted-foreground font-medium">
                                             {exp.company}, {exp.company === "PulseOn-EV" ? "Remote" : "India"}
                                         </span>
-                                        <span className="text-xs sm:text-sm text-gray-500 font-medium uppercase tracking-wide">
+                                        <span className="text-xs sm:text-sm text-muted-foreground font-medium uppercase tracking-wide">
                                             {exp.duration} ({exp.period})
                                         </span>
                                     </div>
@@ -69,13 +69,13 @@ export function ExperienceSection() {
                             {/* Body Content - Starts from vertical line (unindented relative to logo) */}
                             <div className="flex flex-col gap-2">
                                 {/* Description */}
-                                <div className="text-gray-200 text-sm leading-relaxed space-y-3">
-                                    <p className="text-base text-gray-300">{exp.description}</p>
+                                <div className="text-muted-foreground text-sm leading-relaxed space-y-3">
+                                    <p className="text-base text-muted-foreground">{exp.description}</p>
 
                                     {/* Highlights */}
                                     <ul className="list-disc list-outside ml-5 space-y-2">
                                         {exp.highlights.map((highlight, hIndex) => (
-                                            <li key={hIndex} className="pl-1 text-gray-300 text-base">
+                                            <li key={hIndex} className="pl-1 text-muted-foreground text-base">
                                                 {highlight}
                                             </li>
                                         ))}
@@ -86,7 +86,7 @@ export function ExperienceSection() {
                                         <div className="mt-4 pt-2">
                                             <button
                                                 onClick={() => toggleExpand(index)}
-                                                className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                                                className="flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                                             >
                                                 {expandedIndex === index ? (
                                                     <>
@@ -107,22 +107,22 @@ export function ExperienceSection() {
                                                     animate={{ opacity: 1, height: "auto" }}
                                                     exit={{ opacity: 0, height: 0 }}
                                                     transition={{ duration: 0.3 }}
-                                                    className="mt-4 space-y-4 pl-4 border-l-2 border-blue-500/20 text-sm text-gray-400"
+                                                    className="mt-4 space-y-4 pl-4 border-l-2 border-blue-500/20 text-sm text-muted-foreground"
                                                 >
                                                     <div>
-                                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Problem & Constraints</h4>
+                                                        <h4 className="font-semibold text-foreground mb-1 text-base">Problem & Constraints</h4>
                                                         <p>{(exp as any).caseStudy.problemAndConstraints}</p>
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Architecture</h4>
+                                                        <h4 className="font-semibold text-foreground mb-1 text-base">Architecture</h4>
                                                         <p>{(exp as any).caseStudy.architecture}</p>
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Key Decision</h4>
+                                                        <h4 className="font-semibold text-foreground mb-1 text-base">Key Decision</h4>
                                                         <p>{(exp as any).caseStudy.keyDecision}</p>
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-semibold text-gray-200 mb-1 text-base">Business Impact</h4>
+                                                        <h4 className="font-semibold text-foreground mb-1 text-base">Business Impact</h4>
                                                         <p>{(exp as any).caseStudy.businessImpact}</p>
                                                     </div>
                                                 </motion.div>
@@ -136,7 +136,7 @@ export function ExperienceSection() {
                                     {exp.skills.map((skill) => (
                                         <span
                                             key={skill}
-                                            className="px-3 py-1.5 text-sm font-medium rounded-full bg-green-900/20 text-green-400 border border-green-900/30"
+                                            className="px-3 py-1.5 text-sm font-medium rounded-full border badge-green"
                                         >
                                             {skill}
                                         </span>

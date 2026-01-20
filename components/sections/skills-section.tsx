@@ -53,7 +53,7 @@ export function SkillsSection() {
                 Skills
             </motion.h2>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
                 {skillCategories.map((category, categoryIndex) => (
                     <motion.div
                         key={category.title}
@@ -62,7 +62,7 @@ export function SkillsSection() {
                         viewport={{ once: true }}
                         transition={{ delay: categoryIndex * 0.1 }}
                     >
-                        <h3 className="text-lg font-semibold mb-3 text-muted-foreground">
+                        <h3 className="text-sm font-semibold mb-2 text-muted-foreground uppercase tracking-wider">
                             {category.title}
                         </h3>
                         <div className="flex flex-wrap gap-2">
@@ -75,7 +75,7 @@ export function SkillsSection() {
                                     transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.03 }}
                                 >
                                     <span
-                                        className={`inline-flex items-center rounded-full border text-sm px-3 py-1 ${category.colorClasses}`}
+                                        className={`inline-flex items-center rounded-full border text-[13px] px-2.5 py-0.5 ${category.colorClasses}`}
                                     >
                                         {skill}
                                     </span>

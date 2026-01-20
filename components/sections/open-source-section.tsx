@@ -225,26 +225,30 @@ function OpenSourceProjectCard({ project, index }: { project: typeof openSource[
                                     transition={{ duration: 0.3 }}
                                     className="mt-4 space-y-4 pl-4 border-l-2 border-blue-500/20 text-sm text-muted-foreground"
                                 >
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1 text-base">Problem & Constraints</h4>
-                                        <p>{(project as any).caseStudy.problemAndConstraints}</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1 text-base">Architecture</h4>
-                                        <p>{(project as any).caseStudy.architecture}</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1 text-base">Key Decision</h4>
-                                        <p>{(project as any).caseStudy.keyDecision}</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-foreground mb-1 text-base">Business Impact</h4>
-                                        <p>{(project as any).caseStudy.businessImpact}</p>
-                                    </div>
-                                    {(project as any).caseStudy.whyItMatters && (
-                                        <div className="p-3 bg-yellow-50 border-l-4 border-yellow-200 dark:bg-yellow-900/20 dark:border-yellow-600/50 rounded mt-3">
-                                            <h4 className="font-semibold text-yellow-700 dark:text-yellow-200 mb-1">Why It Matters</h4>
-                                            <p className="text-muted-foreground">{(project as any).caseStudy.whyItMatters}</p>
+                                    {(project as any).caseStudy.howIFound && (
+                                        <div>
+                                            <h4 className="font-semibold text-foreground mb-1 text-base">How I Found the Project</h4>
+                                            <p className="whitespace-pre-line">{(project as any).caseStudy.howIFound}</p>
+                                        </div>
+                                    )}
+                                    {(project as any).caseStudy.constraintsAndDesign && (
+                                        <div>
+                                            <h4 className="font-semibold text-foreground mb-1 text-base">Constraints & Design Considerations</h4>
+                                            <p className="whitespace-pre-line">{(project as any).caseStudy.constraintsAndDesign}</p>
+                                        </div>
+                                    )}
+                                    {(project as any).caseStudy.architectureAndImprovements && (
+                                        <div>
+                                            <h4 className="font-semibold text-foreground mb-1 text-base">Architecture & Forward-Looking Improvements</h4>
+                                            <p className="whitespace-pre-line">{(project as any).caseStudy.architectureAndImprovements}</p>
+                                        </div>
+                                    )}
+
+                                    {/* Fallback for old structure if needed, or remove if strictly replacing */}
+                                    {(project as any).caseStudy.problemAndConstraints && !((project as any).caseStudy.constraintsAndDesign) && (
+                                        <div>
+                                            <h4 className="font-semibold text-foreground mb-1 text-base">Problem & Constraints</h4>
+                                            <p>{(project as any).caseStudy.problemAndConstraints}</p>
                                         </div>
                                     )}
                                 </motion.div>

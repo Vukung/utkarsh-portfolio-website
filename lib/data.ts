@@ -130,11 +130,10 @@ export const openSource = [
       "Collaborated in a production open-source environment through PR reviews, issues, and maintainer feedback",
     ],
     caseStudy: {
-      problemAndConstraints: "The codebase had scattered font logic across multiple components, making it difficult to maintain and extend. Real Users needed more flexibility in text placement and modern AI-powered features.",
-      architecture: "Architected a centralized component system using React and Canvas API, with Vercel AI SDK integration for real-time streaming capabilities.",
-      keyDecision: "The decision to refactor font handling into a shared component was critical - it not only eliminated technical debt but set the foundation for scalable feature additions like the 9-position layout system.",
-      businessImpact: "Demonstrates ability to navigate large, unfamiliar codebases, provide meaningful code reviews, and collaborate with maintainers in a production-level OSS environment. The refactoring improved code maintainability by 60% and enabled faster feature development.",
-      whyItMatters: "This contribution showcases the ability to deliver high-quality code in a collaborative environment, understanding both the technical and community aspects of open-source development."
+      howIFound: "While experimenting with ways to surface useful information directly on the desktop, I noticed that most interactive wallpaper or widget-based solutions were either resource-heavy or required constant manual setup. To work around this, I had been manually generating quote-based wallpapers, which highlighted a gap between flexibility and usability.\n\nI discovered this project through a post shared by the maintainer in the Developers India community, where it was being actively discussed and used by developers. On exploring the repository and existing discussions, I realized it solved the core problem well but lacked extensibility around text customization and dynamic content. Reviewing the open issues revealed an existing proposal to add quote support, which closely aligned with my use case and made it a strong opportunity for a meaningful contribution.",
+      constraintsAndDesign: "The solution needed to support flexible text placement across different screen sizes while remaining lightweight and performant. Additionally, the project roadmap included AI-generated quotes based on user preferences, which required integrating a streaming-capable AI SDK without blocking UI rendering or degrading user experience.",
+      // architectureAndImprovements: "Beyond the current implementation, I proposed an API-driven and CLI-based approach to automate daily wallpaper updates. Instead of requiring users to manually download multiple images or manage slideshows, the system would dynamically generate the wallpaper for the current date and update it automatically using OS-specific commands. This design improves reliability, scalability, and cross-platform support while enabling a true “set-it-and-forget-it” experience."
+      architectureAndImprovements: "Beyond the current implementation, I initially proposed an approach where users could generate and download a full set of date-specific wallpapers in one batch, with each image visually reflecting the calendar state (past dates crossed out and the current date highlighted). A lightweight OS-level script would then automatically switch the wallpaper daily by matching the current date to the corresponding image.\n\nDuring discussions in the project’s issue tracker, community feedback highlighted potential limitations of this approach around file management, automation reliability, and cross-platform support. Based on this, a more scalable direction emerged: an API-driven and CLI-based solution that dynamically generates the wallpaper for the current date and updates it automatically using OS-specific commands. This design significantly simplifies user setup while improving reliability and extensibility, enabling a true “set-it-and-forget-it” experience.",
     },
     stats: {
       downloads: "300+",
@@ -193,8 +192,8 @@ export const projects = [
     ],
     skills: ["Python", "Machine Learning", "XGBoost", "Random Forest", "GridSearchCV", "Pickle", "Render"],
     links: {
-      live: "#",
-      github: "#",
+      live: "https://house-price-prediction-city-pune.onrender.com",
+      github: "https://github.com/Vukung/Pune-House-Price-Prediction/tree/master",
     },
     stats: {
       accuracy: "R² score: 0.55",

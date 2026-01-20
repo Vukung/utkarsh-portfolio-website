@@ -168,7 +168,7 @@ export const projects = [
     ],
     skills: ["React.js", "Node.js", "Express.js", "MySQL", "JWT"],
     links: {
-      live: "#",
+      // live: "#",
       github: "https://github.com/Vukung/Resume-Builder-Webapp",
     },
     stats: {

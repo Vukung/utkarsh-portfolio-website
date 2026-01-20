@@ -104,12 +104,14 @@ export function ProjectsSection() {
 
                                 {/* Links */}
                                 <div className="flex gap-3 mt-4">
-                                    <Button variant="outline" size="sm" className="h-8 border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 hover:text-white" asChild>
-                                        <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                                            <ExternalLink className="w-3.5 h-3.5 mr-2" />
-                                            Live Demo
-                                        </a>
-                                    </Button>
+                                    {project.links.live && project.links.live !== "#" && (
+                                        <Button variant="outline" size="sm" className="h-8 border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 hover:text-white" asChild>
+                                            <a href={project.links.live} target="_blank" rel="noopener noreferrer">
+                                                <ExternalLink className="w-3.5 h-3.5 mr-2" />
+                                                Live Demo
+                                            </a>
+                                        </Button>
+                                    )}
                                     <Button variant="outline" size="sm" className="h-8 border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 hover:text-white" asChild>
                                         <a href={project.links.github} target="_blank" rel="noopener noreferrer">
                                             <Github className="w-3.5 h-3.5 mr-2" />

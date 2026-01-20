@@ -74,9 +74,15 @@ export const skills = {
     "API Security & Token Handling",
     "Reusable Component Design",
     "CRUD Operations",
-    "Open-Source Collaboration",
-    "Hyperparameter Tuning",
-    "Data Cleaning & Feature Engineering"
+    "Open-Source Collaboration"
+  ],
+  dataML: [
+    "Data Cleaning & Feature Engineering",
+    // "Applied ML Pipelines (Data Prep → Training → Evaluation)",
+    "Applied ML Pipelines",
+    "Model Evaluation (Regression & Classification Metrics)",
+    "Hyperparameter Tuning (GridSearchCV)",
+    // "Exploratory Visualization & Reporting"
   ],
   cloud: [
     "Application Deployment (Render)",

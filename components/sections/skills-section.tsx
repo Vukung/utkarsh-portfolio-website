@@ -30,6 +30,11 @@ const skillCategories = [
         colorClasses: "badge-blue",
     },
     {
+        title: "Data & ML (Applied / Exploratory)",
+        skills: skills.dataML,
+        colorClasses: "badge-purple",
+    },
+    {
         title: "Practices",
         skills: skills.practices,
         colorClasses: "badge-yellow",

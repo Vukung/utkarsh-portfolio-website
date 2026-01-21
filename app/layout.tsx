@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     description: "Software Engineer specializing in Application & Data Engineering. Check out my projects and experience.",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

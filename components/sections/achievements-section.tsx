@@ -1,10 +1,11 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { achievements, leadership } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Award, Presentation, Trophy, Users } from "lucide-react";
+import { Award, ExternalLink, Presentation, Trophy, Users } from "lucide-react";
 
 const getIcon = (type: string) => {
     switch (type) {
@@ -106,6 +107,13 @@ export function AchievementsSection() {
                                                 <p className="text-sm text-muted-foreground leading-relaxed">
                                                     {item.description}
                                                 </p>
+                                                {item.link && (
+                                                    <Button variant="outline" size="sm" className="mt-3 h-8 gap-1" asChild>
+                                                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                                                            Verify <ExternalLink className="w-3 h-3" />
+                                                        </a>
+                                                    </Button>
+                                                )}
                                             </div>
                                         </div>
                                     </CardContent>

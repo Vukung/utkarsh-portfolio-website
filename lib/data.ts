@@ -237,6 +237,7 @@ export const achievements = [
     year: "2024",
     description: "Completed AWS Academy Cloud Foundation certification",
     type: "Certification",
+    link: "https://www.credly.com/badges/b3c95ae1-575e-4981-bc6f-4938226d4796",
   },
   {
     title: "AWS Academy Graduate – Data Engineering",
@@ -244,6 +245,7 @@ export const achievements = [
     year: "2024",
     description: "Completed AWS Academy Data Engineering certification",
     type: "Certification",
+    link: "https://www.credly.com/badges/76c261ab-03a6-4d92-9260-c7a4fe0e747a",
   },
 ];
 

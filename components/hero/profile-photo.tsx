@@ -1,5 +1,6 @@
 "use client";
 
+import { useEasterEgg } from "@/contexts/easter-egg-context";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ export function ProfilePhoto({ className }: { className?: string }) {
     const [isMobile, setIsMobile] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
     const [animationKey, setAnimationKey] = useState(0);
+    const { triggerEasterEgg } = useEasterEgg();
 
     useEffect(() => {
         // Check if mobile
@@ -39,14 +41,28 @@ export function ProfilePhoto({ className }: { className?: string }) {
 
     const handleClick = () => {
         if (isMobile) {
-            setShowGlasses((prev) => !prev);
+            setShowGlasses((prev) => {
+                const newValue = !prev;
+                // Trigger Easter egg when showing glasses on mobile
+                if (newValue) {
+                    triggerEasterEgg("cool-shades", "Cool Shades");
+                }
+                return newValue;
+            });
         }
     };
 
     // When animation completes, toggle the photo
     const handleAnimationComplete = () => {
         if (isHovering) {
-            setShowGlasses((prev) => !prev);
+            setShowGlasses((prev) => {
+                const newValue = !prev;
+                // Trigger Easter egg when showing glasses
+                if (newValue) {
+                    triggerEasterEgg("cool-shades", "Cool Shades");
+                }
+                return newValue;
+            });
         }
     };
 

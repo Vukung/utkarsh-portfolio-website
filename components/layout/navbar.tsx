@@ -1,5 +1,6 @@
 "use client";
 
+import { EasterEggCounter } from "@/components/easter-egg-counter";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
@@ -76,6 +77,7 @@ export function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-4">
+                    <EasterEggCounter />
                     <ThemeToggle />
                     {/* Close button for mobile menu (positioned here or inside overlay, let's keep trigger simple) */}
                 </div>

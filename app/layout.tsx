@@ -1,8 +1,10 @@
+import { ToastContainer } from "@/components/toast-container";
+import { EasterEggProvider } from "@/contexts/easter-egg-context";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,6 +14,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const vt323 = VT323({
+  weight: "400",
+  variable: "--font-vt323",
   subsets: ["latin"],
 });
 
@@ -39,7 +47,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${vt323.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -47,7 +55,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <EasterEggProvider>
+            {children}
+            <ToastContainer />
+          </EasterEggProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
@@ -55,3 +66,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+

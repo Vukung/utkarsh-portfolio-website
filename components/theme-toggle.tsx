@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useEasterEgg } from "@/contexts/easter-egg-context";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -12,6 +13,7 @@ export function ThemeToggle() {
     const [showWarning, setShowWarning] = useState(false);
     const [showToldYa, setShowToldYa] = useState(false);
     const [flash, setFlash] = useState(false);
+    const { triggerEasterEgg } = useEasterEgg();
 
     useEffect(() => {
         setMounted(true);
@@ -43,6 +45,8 @@ export function ThemeToggle() {
 
     const cancelSwitch = () => {
         setShowWarning(false);
+        // Trigger Easter egg when user refuses to switch to light mode
+        triggerEasterEgg("dark-mode-warning", "Flashbang Survivor");
     };
 
     if (!mounted) {

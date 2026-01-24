@@ -3,14 +3,15 @@
 import { useEasterEgg } from "@/contexts/easter-egg-context";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ProfilePhoto({ className }: { className?: string }) {
     const [showGlasses, setShowGlasses] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
     const [animationKey, setAnimationKey] = useState(0);
-    const { triggerEasterEgg } = useEasterEgg();
+    const { triggerEasterEgg, spawnXP, discoveredEggs } = useEasterEgg();
+    const photoRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // Check if mobile
@@ -43,9 +44,10 @@ export function ProfilePhoto({ className }: { className?: string }) {
         if (isMobile) {
             setShowGlasses((prev) => {
                 const newValue = !prev;
-                // Trigger Easter egg when showing glasses on mobile
-                if (newValue) {
+                // Trigger Easter egg when showing glasses on mobile (only if not already discovered)
+                if (newValue && photoRef.current && !discoveredEggs.has("cool-shades")) {
                     triggerEasterEgg("cool-shades", "Cool Shades");
+                    spawnXP(photoRef.current);
                 }
                 return newValue;
             });
@@ -57,9 +59,10 @@ export function ProfilePhoto({ className }: { className?: string }) {
         if (isHovering) {
             setShowGlasses((prev) => {
                 const newValue = !prev;
-                // Trigger Easter egg when showing glasses
-                if (newValue) {
+                // Trigger Easter egg when showing glasses (only if not already discovered)
+                if (newValue && photoRef.current && !discoveredEggs.has("cool-shades")) {
                     triggerEasterEgg("cool-shades", "Cool Shades");
+                    spawnXP(photoRef.current);
                 }
                 return newValue;
             });
@@ -70,7 +73,7 @@ export function ProfilePhoto({ className }: { className?: string }) {
     const animationDuration = 0.5; // seconds - matches photo transition - cancelled - now instant transition
 
     return (
-        <div className={`relative mx-auto md:mx-0 ${className || "w-32 h-32"}`}>
+        <div ref={photoRef} className={`relative mx-auto md:mx-0 ${className || "w-32 h-32"}`}>
             {/* Animated loading ring - only visible on hover */}
             <svg
                 className="absolute inset-0 w-full h-full -rotate-90"

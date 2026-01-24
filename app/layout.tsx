@@ -1,4 +1,5 @@
 import { ToastContainer } from "@/components/toast-container";
+import { XPManager } from "@/components/xp/xp-manager";
 import { EasterEggProvider } from "@/contexts/easter-egg-context";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -58,6 +59,7 @@ export default function RootLayout({
           <EasterEggProvider>
             {children}
             <ToastContainer />
+            <XPManager />
           </EasterEggProvider>
         </ThemeProvider>
         <Analytics />

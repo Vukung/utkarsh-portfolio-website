@@ -5,7 +5,7 @@ import { useEasterEgg } from "@/contexts/easter-egg-context";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
@@ -13,7 +13,8 @@ export function ThemeToggle() {
     const [showWarning, setShowWarning] = useState(false);
     const [showToldYa, setShowToldYa] = useState(false);
     const [flash, setFlash] = useState(false);
-    const { triggerEasterEgg } = useEasterEgg();
+    const { triggerEasterEgg, spawnXP, discoveredEggs } = useEasterEgg();
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         setMounted(true);
@@ -45,8 +46,11 @@ export function ThemeToggle() {
 
     const cancelSwitch = () => {
         setShowWarning(false);
-        // Trigger Easter egg when user refuses to switch to light mode
-        triggerEasterEgg("dark-mode-warning", "Flashbang Survivor");
+        // Trigger Easter egg when user refuses to switch to light mode (only if not already discovered)
+        if (buttonRef.current && !discoveredEggs.has("dark-mode-warning")) {
+            triggerEasterEgg("dark-mode-warning", "Flashbang Survivor");
+            spawnXP(buttonRef.current);
+        }
     };
 
     if (!mounted) {
@@ -69,6 +73,7 @@ export function ThemeToggle() {
             </AnimatePresence>
 
             <Button
+                ref={buttonRef}
                 variant="ghost"
                 size="icon"
                 onClick={handleThemeToggle}

@@ -43,7 +43,7 @@ export function EasterEggProvider({ children }: { children: React.ReactNode }) {
     const [toast, setToast] = useState<ToastData | null>(null);
     const [orbs, setOrbs] = useState<Orb[]>([]);
 
-    const soundOptions = React.useMemo(() => ({ volume: 0.5 }), []);
+    const soundOptions = React.useMemo(() => ({ volume: 0.8 }), []);
     const [playLevelUp] = useSound("/xp.m4a", soundOptions);
 
     // Play sound when toast appears
@@ -66,9 +66,9 @@ export function EasterEggProvider({ children }: { children: React.ReactNode }) {
             const hasDarkMode = newDiscovered.has("dark-mode-warning");
 
             if (!hasPFP && hasDarkMode) {
-                hint = "Hint: Look for the cool shades...";
+                hint = "Hint for next Easter Egg:  Look for the cool shades...";
             } else if (hasPFP && !hasDarkMode) {
-                hint = "Hint: Flashbang incoming...";
+                hint = "Hint for next Easter Egg:  Flashbang incoming...";
             }
 
             // Show toast notification with hint

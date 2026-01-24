@@ -27,16 +27,16 @@ export function Toast({ message, visible, hint, onClose }: ToastProps) {
                             backgroundColor: '#212121',
                             border: '2px solid white',
                             boxShadow: '0 0 0 4px #212121, 0 0 0 6px white, 0 8px 16px rgba(0,0,0,0.5)',
-                            padding: '16px 20px',
+                            padding: '8px 12px', // Reduced padding
                             borderRadius: '4px',
-                            minWidth: '300px',
-                            imageRendering: 'pixelated',
+                            minWidth: '240px', // Reduced width
+                            maxWidth: '320px',
                         }}
                     >
-                        <div className="flex items-start gap-3 font-vt323">
+                        <div className="flex items-start gap-3">
                             {/* Minecraft-style trophy icon */}
                             <div
-                                className="text-3xl flex-shrink-0 mt-1"
+                                className="text-2xl flex-shrink-0 mt-0.5" // Reduced icon size
                                 style={{
                                     filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.3))',
                                     color: '#FFD700'
@@ -44,24 +44,23 @@ export function Toast({ message, visible, hint, onClose }: ToastProps) {
                             >
                                 🏆
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                                 <p
-                                    className="font-bold text-lg tracking-wide mb-1"
+                                    className="font-bold text-base tracking-wide leading-tight" // Reduced text size
                                     style={{ color: '#FFFF55' }}
                                 >
                                     Advancement Made!
                                 </p>
                                 <p
-                                    className="text-base text-white tracking-wide mb-2"
+                                    className="text-sm text-white tracking-wide leading-tight mb-1" // Reduced text size
                                     style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}
                                 >
                                     {message}
                                 </p>
                                 {hint && (
-                                    <div className="border-t border-white/20 pt-2 mt-1">
+                                    <div className="border-t border-white/20 pt-1 mt-1">
                                         <p
-                                            className="text-sm text-gray-300 italic"
-                                            style={{ fontFamily: 'monospace' }}
+                                            className="text-xs text-gray-300 italic leading-tight" // Reduced text size
                                         >
                                             {hint}
                                         </p>

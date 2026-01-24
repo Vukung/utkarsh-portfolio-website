@@ -16,7 +16,7 @@ interface XPOrbProps {
 
 export function XPOrb({ id, startX, startY, variant, index, onCollect }: XPOrbProps) {
     const soundOptions = useMemo(() => ({
-        volume: 0.25,
+        volume: 0.4,
         playbackRate: 0.8 + (index * 0.1),
     }), [index]);
 

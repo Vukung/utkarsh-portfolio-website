@@ -77,7 +77,7 @@ export function EasterEggProvider({ children }: { children: React.ReactNode }) {
             // Auto-dismiss after 6 seconds (increased from 5 for reading time)
             setTimeout(() => {
                 setToast((current) => current ? { ...current, visible: false } : null);
-            }, 6000);
+            }, 6000);   
 
             // Clear toast completely after animation
             setTimeout(() => {

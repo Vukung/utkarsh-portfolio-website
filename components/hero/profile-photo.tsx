@@ -86,16 +86,16 @@ export function ProfilePhoto({ className }: { className?: string }) {
                         initial={{ opacity: 0, y: 10, scale: 0.8 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                        className="absolute -top-12 left-1/2 -translate-x-1/2 z-50 whitespace-nowrap pointer-events-none"
+                        className="absolute -top-8 left-[60%] -translate-x-1/2 z-50 whitespace-nowrap pointer-events-none animate-pulse"
                     >
                         <div
-                            className="px-3 py-1 bg-black/80 border border-white text-white text-sm rounded pixelated animate-pulse"
+                            className="px-3 py-1 bg-black/80 border border-white text-white text-sm rounded pixelated"
                             style={{ fontFamily: "'VT323', monospace" }}
                         >
                             [Click to Collect XP]
                         </div>
                         {/* Pixel arrow */}
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/80 border-r border-b border-white rotate-45 transform" />
+                        <div className="absolute -bottom-1 left-[40%] -translate-x-1/2 w-2 h-2 bg-black/80 border-r border-b border-white rotate-45 transform" />
                     </motion.div>
                 )}
             </AnimatePresence>

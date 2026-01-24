@@ -14,11 +14,11 @@ export function Toast({ message, visible, hint, onClose }: ToastProps) {
         <AnimatePresence>
             {visible && (
                 <motion.div
-                    initial={{ opacity: 0, x: 100, y: 0 }}
-                    animate={{ opacity: 1, x: 0, y: 0 }}
-                    exit={{ opacity: 0, x: 100 }}
-                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                    className="fixed top-40 right-6 z-[100] pointer-events-auto"
+                    initial={{ opacity: 0, y: -50, x: 0 }}
+                    animate={{ opacity: 1, y: 0, x: 0 }}
+                    exit={{ opacity: 0, y: -50 }}
+                    transition={{ type: "spring", damping: 20, stiffness: 300 }}
+                    className="fixed top-20 right-[20%] z-[100] pointer-events-auto"
                     onClick={onClose}
                 >
                     <div

@@ -8,5 +8,5 @@ export function ToastContainer() {
 
     if (!toast) return null;
 
-    return <Toast message={toast.name} visible={toast.visible} />;
+    return <Toast message={toast.name} visible={toast.visible} hint={toast.hint} />;
 }

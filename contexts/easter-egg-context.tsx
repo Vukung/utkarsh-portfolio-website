@@ -13,6 +13,7 @@ interface ToastData {
     name: string;
     type: 'achievement';
     visible: boolean;
+    hint?: string;
 }
 
 interface Orb {
@@ -56,21 +57,32 @@ export function EasterEggProvider({ children }: { children: React.ReactNode }) {
     const triggerEasterEgg = useCallback((id: string, name: string) => {
         // Only trigger if not already discovered
         if (!discoveredEggs.has(id)) {
-            setDiscoveredEggs((prev) => new Set(prev).add(id));
+            const newDiscovered = new Set(discoveredEggs).add(id);
+            setDiscoveredEggs(newDiscovered);
 
-            // Show toast notification
-            setToast({ id, name, type: 'achievement', visible: true });
-            // playLevelUp removed from here - handled by effect
+            // Determine hint for the NEXT secret
+            let hint = "2/2 Secrets Found. Achievements Complete!";
+            const hasPFP = newDiscovered.has("cool-shades");
+            const hasDarkMode = newDiscovered.has("dark-mode-warning");
 
-            // Auto-dismiss after 5 seconds
+            if (!hasPFP && hasDarkMode) {
+                hint = "Hint: Look for the cool shades...";
+            } else if (hasPFP && !hasDarkMode) {
+                hint = "Hint: Flashbang incoming...";
+            }
+
+            // Show toast notification with hint
+            setToast({ id, name, type: 'achievement', visible: true, hint });
+
+            // Auto-dismiss after 6 seconds (increased from 5 for reading time)
             setTimeout(() => {
                 setToast((current) => current ? { ...current, visible: false } : null);
-            }, 5000);
+            }, 6000);
 
             // Clear toast completely after animation
             setTimeout(() => {
                 setToast(null);
-            }, 5500);
+            }, 6500);
         }
     }, [discoveredEggs]);
 

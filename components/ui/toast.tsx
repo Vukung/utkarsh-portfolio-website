@@ -5,10 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 interface ToastProps {
     message: string;
     visible: boolean;
+    hint?: string;
     onClose?: () => void;
 }
 
-export function Toast({ message, visible, onClose }: ToastProps) {
+export function Toast({ message, visible, hint, onClose }: ToastProps) {
     return (
         <AnimatePresence>
             {visible && (
@@ -28,7 +29,8 @@ export function Toast({ message, visible, onClose }: ToastProps) {
                             boxShadow: '0 0 0 4px #212121, 0 0 0 6px white, 0 8px 16px rgba(0,0,0,0.5)',
                             padding: '16px 20px',
                             borderRadius: '4px',
-                            minWidth: '280px',
+                            minWidth: '300px',
+                            imageRendering: 'pixelated',
                         }}
                     >
                         <div className="flex items-start gap-3 font-vt323">
@@ -47,14 +49,24 @@ export function Toast({ message, visible, onClose }: ToastProps) {
                                     className="font-bold text-lg tracking-wide mb-1"
                                     style={{ color: '#FFFF55' }}
                                 >
-                                    Achievement Get!
+                                    Advancement Made!
                                 </p>
                                 <p
-                                    className="text-base text-white tracking-wide"
+                                    className="text-base text-white tracking-wide mb-2"
                                     style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}
                                 >
                                     {message}
                                 </p>
+                                {hint && (
+                                    <div className="border-t border-white/20 pt-2 mt-1">
+                                        <p
+                                            className="text-sm text-gray-300 italic"
+                                            style={{ fontFamily: 'monospace' }}
+                                        >
+                                            {hint}
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

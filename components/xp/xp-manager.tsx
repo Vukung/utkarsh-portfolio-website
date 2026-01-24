@@ -8,13 +8,14 @@ export function XPManager() {
 
     return (
         <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9999 }}>
-            {orbs.map((orb) => (
+            {orbs.map((orb, index) => (
                 <XPOrb
                     key={orb.id}
                     id={orb.id}
                     startX={orb.startX}
                     startY={orb.startY}
                     variant={orb.variant}
+                    index={index}
                     onCollect={removeOrb}
                 />
             ))}

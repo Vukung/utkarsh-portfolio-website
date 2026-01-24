@@ -1,6 +1,7 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import useSound from "use-sound";
 
 interface EasterEgg {
     id: string;
@@ -8,7 +9,9 @@ interface EasterEgg {
 }
 
 interface ToastData {
+    id: string;
     name: string;
+    type: 'achievement';
     visible: boolean;
 }
 
@@ -39,13 +42,25 @@ export function EasterEggProvider({ children }: { children: React.ReactNode }) {
     const [toast, setToast] = useState<ToastData | null>(null);
     const [orbs, setOrbs] = useState<Orb[]>([]);
 
+    const soundOptions = React.useMemo(() => ({ volume: 0.5 }), []);
+    const [playLevelUp] = useSound("/xp.m4a", soundOptions);
+
+    // Play sound when toast appears
+    useEffect(() => {
+        if (toast && toast.visible) {
+            console.log("🔊 Toast visible, playing Level Up");
+            playLevelUp();
+        }
+    }, [toast, playLevelUp]);
+
     const triggerEasterEgg = useCallback((id: string, name: string) => {
         // Only trigger if not already discovered
         if (!discoveredEggs.has(id)) {
             setDiscoveredEggs((prev) => new Set(prev).add(id));
 
             // Show toast notification
-            setToast({ name, visible: true });
+            setToast({ id, name, type: 'achievement', visible: true });
+            // playLevelUp removed from here - handled by effect
 
             // Auto-dismiss after 5 seconds
             setTimeout(() => {

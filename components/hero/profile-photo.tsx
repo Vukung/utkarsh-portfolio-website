@@ -42,30 +42,28 @@ export function ProfilePhoto({ className }: { className?: string }) {
 
     const handleClick = () => {
         if (isMobile) {
-            setShowGlasses((prev) => {
-                const newValue = !prev;
-                // Trigger Easter egg when showing glasses on mobile (only if not already discovered)
-                if (newValue && photoRef.current && !discoveredEggs.has("cool-shades")) {
-                    triggerEasterEgg("cool-shades", "Cool Shades");
-                    spawnXP(photoRef.current);
-                }
-                return newValue;
-            });
+            setShowGlasses((prev) => !prev);
+
+            // Trigger Easter egg when showing glasses on mobile (only if not already discovered)
+            // We check !showGlasses because we are about to toggle it to true
+            if (!showGlasses && photoRef.current && !discoveredEggs.has("cool-shades")) {
+                triggerEasterEgg("cool-shades", "Cool Shades");
+                spawnXP(photoRef.current);
+            }
         }
     };
 
     // When animation completes, toggle the photo
     const handleAnimationComplete = () => {
         if (isHovering) {
-            setShowGlasses((prev) => {
-                const newValue = !prev;
-                // Trigger Easter egg when showing glasses (only if not already discovered)
-                if (newValue && photoRef.current && !discoveredEggs.has("cool-shades")) {
-                    triggerEasterEgg("cool-shades", "Cool Shades");
-                    spawnXP(photoRef.current);
-                }
-                return newValue;
-            });
+            setShowGlasses((prev) => !prev);
+
+            // Trigger Easter egg when showing glasses (only if not already discovered)
+            // We check !showGlasses because we are about to toggle it to true
+            if (!showGlasses && photoRef.current && !discoveredEggs.has("cool-shades")) {
+                triggerEasterEgg("cool-shades", "Cool Shades");
+                spawnXP(photoRef.current);
+            }
         }
     };
 

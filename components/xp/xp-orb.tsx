@@ -2,17 +2,25 @@
 
 import { motion, useMotionValue } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import useSound from "use-sound";
 
 interface XPOrbProps {
     id: string;
     startX: number;
     startY: number;
     variant: "green" | "yellow";
+    index: number;
     onCollect: (id: string) => void;
 }
 
-export function XPOrb({ id, startX, startY, variant, onCollect }: XPOrbProps) {
+export function XPOrb({ id, startX, startY, variant, index, onCollect }: XPOrbProps) {
+    const soundOptions = useMemo(() => ({
+        volume: 0.25,
+        playbackRate: 0.8 + (index * 0.1),
+    }), [index]);
+
+    const [playCollect] = useSound("/xp.m4a", soundOptions);
     const [phase, setPhase] = useState<"burst" | "magnet" | "collect">("burst");
     const [currentTargetX, setCurrentTargetX] = useState(0);
     const [currentTargetY, setCurrentTargetY] = useState(0);
@@ -84,6 +92,7 @@ export function XPOrb({ id, startX, startY, variant, onCollect }: XPOrbProps) {
 
         // Phase 3: Collection - call onCollect after animation
         const collectTimer = setTimeout(() => {
+            playCollect();
             onCollect(id);
         }, 1600);
 

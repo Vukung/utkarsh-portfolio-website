@@ -155,7 +155,7 @@ export function ProfilePhoto({ className }: { className?: string }) {
                     transition={{ duration: 0.2 }}
                 >
                     <Image
-                        src="/profile1.jpg"
+                        src="/profile2.png"
                         alt="Utkarsh Shirbhate"
                         fill
                         className="object-cover"
@@ -170,7 +170,7 @@ export function ProfilePhoto({ className }: { className?: string }) {
                     transition={{ duration: 0.2 }}
                 >
                     <Image
-                        src="/profile-glasses1.jpg"
+                        src="/profile-glasses2.png"
                         alt="Utkarsh Shirbhate with glasses"
                         fill
                         className="object-cover"
